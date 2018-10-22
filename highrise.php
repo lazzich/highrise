@@ -8,9 +8,9 @@ function getResponse($url,$password) {
   $options = [];
   $options[CURLOPT_HTTPGET] = true;
   $options[CURLOPT_VERBOSE] = true;
-	$options[CURLOPT_SSL_VERIFYPEER] = false;
+  $options[CURLOPT_SSL_VERIFYPEER] = false;
   $options[CURLOPT_SSL_VERIFYHOST] = false;
-	$options[CURLOPT_RETURNTRANSFER] = true;
+  $options[CURLOPT_RETURNTRANSFER] = true;
   $options[CURLOPT_USERPWD] = $password;
   $options[CURLOPT_HTTPHEADER] = array('Accept: application/xml', 'Content-Type: application/xml');
 
