@@ -1,5 +1,6 @@
 <?php
 
+// Include password and Highrise URl here
 require_once(".env");
 
 function getResponse($url,$password) {
