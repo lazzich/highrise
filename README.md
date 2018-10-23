@@ -1,2 +1,2 @@
 # highrise
-Hier gehts jezze rischisch rund
+This script parses results from the company node of the Highrise XML
