@@ -16,8 +16,6 @@ function getResponse($url,$password) {
 
   curl_setopt_array($ch, $options);
 
-  echo $options[CURLOPT_USERPWD];
-
   $response = curl_exec($ch);
   curl_close($ch);
   return $response;
@@ -25,11 +23,20 @@ function getResponse($url,$password) {
 
 $data = getResponse($highrise_url,$userpwd);
 $xml = new SimpleXMLElement($data);
-print_r($xml);
 
-echo "<hr />";
-
+echo $xml->company->name."<br />";
 echo $xml->company->{'contact-data'}->{'email-addresses'}->{'email-address'}->{'address'}."<br />";
-echo $xml->company->{'contact-data'}->{'addresses'}->{'address'}->street;
+
+foreach ($xml->company->{'contact-data'}->{'phone-numbers'}->{'phone-number'} as $phonenumber) {
+echo $phonenumber->{'number'}." - ".$phonenumber->{'location'}."<br />";
+}
+
+foreach ($xml->company->{'contact-data'}->{'web-addresses'}->{'web-address'} as $webaddress) {
+echo $webaddress->{'url'}."<br />";
+}
+
+echo $xml->company->{'contact-data'}->{'addresses'}->{'address'}->street."<br />";
+echo $xml->company->{'contact-data'}->{'addresses'}->{'address'}->zip." ";
+echo $xml->company->{'contact-data'}->{'addresses'}->{'address'}->city."<br />";
 
 ?>
